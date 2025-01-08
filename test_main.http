@@ -1,9 +1,95 @@
-# Test your FastAPI endpoints
+# --- Register a New User ---
+POST http://127.0.0.1:8000/register
+Content-Type: application/json
 
-GET http://127.0.0.1:8000/
-Accept: application/json
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
 ###
 
-GET http://127.0.0.1:8000/hello/User
-Accept: application/json
+# --- Login with the Created User ---
+POST http://127.0.0.1:8000/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+> {%
+  client.global.set("token", response.body.token);
+%}
+
+###
+
+# --- Create Data Entry ---
+POST http://127.0.0.1:8000/data
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "date": "2023-10-15",
+  "time": "14:30",
+  "description": "Test description",
+  "image_file_path": "/path/to/image.jpg"
+}
+
+###
+
+# --- Get All Data (Retrieve Data) ---
+GET http://127.0.0.1:8000/data
+Authorization: Bearer {{token}}
+
+###
+
+# --- Update an Existing Data Entry ---
+PUT http://127.0.0.1:8000/data/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "date": "2023-10-17",
+  "time": "16:00",
+  "description": "Updated description",
+  "image_file_path": "/updated/path/to/image.jpg"
+}
+
+###
+
+
+# --- Delete a Data Entry ---
+DELETE http://127.0.0.1:8000/data/1
+Authorization: Bearer {{token}}
+
+###
+
+# --- Retrieve All Data After Deletion (Check Empty) ---
+GET http://127.0.0.1:8000/data
+Authorization: Bearer {{token}}
+
+###
+
+# --- Upload an Image File ---
+POST http://127.0.0.1:8000/upload-image/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="butterfly.jpg"
+Content-Type: image/jpeg
+
+< ./test_data/butterfly.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+# --- List All Uploaded Images ---
+GET http://127.0.0.1:8000/images/
+
+###
+
+# --- Get a Specific Image ---
+GET http://127.0.0.1:8000/images/butterfly.jpg
+
 ###
