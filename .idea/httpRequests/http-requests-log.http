@@ -3,6 +3,143 @@ User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
+<> butterfly-2.jpg
+
+###
+
+GET http://127.0.0.1:8000/images/
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-01-09T110147-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/upload-image/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 18733
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="butterfly.jpg"
+Content-Type: image/jpeg
+
+< D:\FastAPI_test\test_data\butterfly.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+<> 2025-01-09T110147-1.400.json
+
+###
+
+GET http://127.0.0.1:8000/data
+Authorization: Bearer ff7f2bca563f7031764ab8409c24d7ff
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-01-09T110147-4.422.json
+
+###
+
+DELETE http://127.0.0.1:8000/data/1
+Authorization: Bearer ff7f2bca563f7031764ab8409c24d7ff
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2025-01-09T110147-3.422.json
+
+###
+
+PUT http://127.0.0.1:8000/data/1
+Content-Type: application/json
+Authorization: Bearer ff7f2bca563f7031764ab8409c24d7ff
+Content-Length: 136
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "date": "2023-10-17",
+  "time": "16:00",
+  "description": "Updated description",
+  "image_file_path": "/updated/path/to/image.jpg"
+}
+
+<> 2025-01-09T110147-2.422.json
+
+###
+
+GET http://127.0.0.1:8000/data
+Authorization: Bearer ff7f2bca563f7031764ab8409c24d7ff
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-01-09T110147-1.422.json
+
+###
+
+POST http://127.0.0.1:8000/data
+Content-Type: application/json
+Authorization: Bearer ff7f2bca563f7031764ab8409c24d7ff
+Content-Length: 125
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "date": "2023-10-15",
+  "time": "14:30",
+  "description": "Test description",
+  "image_file_path": "/path/to/image.jpg"
+}
+
+<> 2025-01-09T110147.422.json
+
+###
+
+POST http://127.0.0.1:8000/login
+Content-Type: application/json
+Content-Length: 58
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+<> 2025-01-09T110147.200.json
+
+###
+
+POST http://127.0.0.1:8000/register
+Content-Type: application/json
+Content-Length: 58
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+<> 2025-01-09T110147.400.json
+
+###
+
+GET http://127.0.0.1:8000/images/butterfly.jpg
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
 <> butterfly-1.jpg
 
 ###
